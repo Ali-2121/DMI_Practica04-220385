@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:widget_app_220385/presentation/providers/discover_provider.dart';
-import 'package:widget_app_220385/presentation/screens/discover/discover_screen.dart';
-import 'package:widget_app_220385/theme/app_theme.dart';
+import 'package:widgate_app_220385/presentation/Screens/discover/discover_screen.dart';
+import 'package:widgate_app_220385/presentation/providers/discover_provider.dart';
+import 'package:widgate_app_220385/theme/app_theme.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,13 +15,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => DiscoverProvider()),
+        ChangeNotifierProvider(lazy: false, create: (_) => DiscoverProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: AppTheme(selectedColor: 4).getTheme(),
-        home: const DisscoverScreen(),
-      ),
-    );
-  }
+        theme: AppTheme(selectedColor: 3).getTheme(),
+        home: const DiscoveryScreen(),
+  ),
+);
+}
 }
