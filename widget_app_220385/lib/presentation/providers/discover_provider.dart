@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:widgate_app_220385/domain/entities/video_post.dart';
-import 'package:widgate_app_220385/infraestruture/models/local_video_model.dart';
-import 'package:widgate_app_220385/Shared/data/localvideo_posts.dart';
+import 'package:widget_app_220385/domain/entitites/video_post.dart';
+import 'package:widget_app_220385/infrastructure/models/local_video_model.dart';
+import 'package:widget_app_220385/shared/data/local_video_post.dart';
+
 
 class DiscoverProvider extends ChangeNotifier { // Nos permite cambiar el estado de la aplicacion
   bool initialLoading = true;

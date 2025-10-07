@@ -1,4 +1,6 @@
-import 'package:widgate_app_220472/domain/entities/video_post.dart';
+
+
+import 'package:widget_app_220385/domain/entitites/video_post.dart';
 
 class LocalVideoModel {
   final String name;
@@ -24,5 +26,5 @@ class LocalVideoModel {
     views: json['views'] ?? 0
   );/// Mapper te permite recorrer datos 
 
-  VideoPost toVideoPostEntity()=> VideoPost(caption: name, videURL: videoUrl, likes: likes, views: views);
+  VideoPost toVideoPostEntity()=> VideoPost(caption: name, videoUrl: videoUrl, likes: likes, views: views);
 }
