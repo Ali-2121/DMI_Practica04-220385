@@ -20,6 +20,9 @@ class _FullscreenPlayerState extends State<FullscreenPlayer> {
   late VideoPlayerController controller;
   late Future<void> _initializeVideoPlayerFuture;
 
+  bool _showIcon = false; 
+  IconData _iconData = Icons.play_arrow; 
+
   @override
   void initState() {
     super.initState();
@@ -28,12 +31,33 @@ class _FullscreenPlayerState extends State<FullscreenPlayer> {
       ..setVolume(0)
       ..setLooping(true);
 
-    // ✅ Solo inicializamos una vez
-      _initializeVideoPlayerFuture = controller.initialize().then((_) {
-    controller.play(); // 👈 se llama después de inicializar
-    setState(() {});   // 👈 fuerza el rebuild
-  });
-}
+    _initializeVideoPlayerFuture = controller.initialize().then((_) {
+      controller.play();
+      setState(() {});
+    });
+  }
+
+  void _togglePlayPause() {
+    setState(() {
+      if (controller.value.isPlaying) {
+        controller.pause();
+        _iconData = Icons.pause;
+      } else {
+        controller.play();
+        _iconData = Icons.play_arrow;
+      }
+      _showIcon = true;
+    });
+
+    // Oculta el ícono después de un pequeño retraso
+    Future.delayed(const Duration(milliseconds: 800), () {
+      if (mounted) {
+        setState(() {
+          _showIcon = false;
+        });
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -42,58 +66,64 @@ class _FullscreenPlayerState extends State<FullscreenPlayer> {
   }
 
   @override
-Widget build(BuildContext context) {
- return FutureBuilder(
-  future: _initializeVideoPlayerFuture,
-  builder: (context, snapshot) {
-    if (snapshot.hasError) {
-      return Center(child: Text('Error: ${snapshot.error}'));
-    }
-
-    if (snapshot.connectionState != ConnectionState.done) {
-      return const Center(child: CircularProgressIndicator(strokeWidth: 2));
-    }
-
-    if (!controller.value.isInitialized) {
-      return const Center(child: Text('Video no inicializado'));
-    }
-
-    return GestureDetector(
-      onTap: (){
-        if (controller.value.isPlaying) {
-          controller.pause();
-          return;
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _initializeVideoPlayerFuture,
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
         }
-        controller.play();
 
-      },
-      child: AspectRatio(
-        aspectRatio: controller.value.aspectRatio,
-        child: Stack(
-          children: [
-            VideoPlayer(controller),
-      
-            //Gradiente
-            VideoBackgound(
-              stops: const  [0.8, 1.0],
+        if (snapshot.connectionState != ConnectionState.done) {
+          return const Center(child: CircularProgressIndicator(strokeWidth: 2));
+        }
+
+        if (!controller.value.isInitialized) {
+          return const Center(child: Text('Video no inicializado'));
+        }
+
+        return GestureDetector(
+          onTap: _togglePlayPause,
+          child: AspectRatio(
+            aspectRatio: controller.value.aspectRatio,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                VideoPlayer(controller),
+
+                // Gradiente
+                VideoBackgound(stops: const [0.8, 1.0]),
+
+                // Ícono central (animado)
+                if (_showIcon)
+                  AnimatedOpacity(
+                    opacity: _showIcon ? 1 : 0,
+                    duration: const Duration(milliseconds: 200),
+                    child: Icon(
+                      _iconData,
+                      color: Colors.white60,
+                      size: 80,
+                    ),
+                  ),
+
+                // Texto inferior
+                Positioned(
+                  bottom: 20,
+                  left: 20,
+                  child: _VideoCaption(caption: widget.caption),
+                ),
+              ],
             ),
-            //Texto
-            Positioned(
-              bottom: 20,
-              left: 20,
-              child: _VideoCaption( caption: widget.caption ))
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
-  },
-);
-}
+  }
 }
 
 class _VideoCaption extends StatelessWidget {
   final String caption;
-  const _VideoCaption({ required this.caption});
+  const _VideoCaption({required this.caption});
 
   @override
   Widget build(BuildContext context) {

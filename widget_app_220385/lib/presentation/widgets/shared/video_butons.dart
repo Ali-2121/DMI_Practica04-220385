@@ -28,7 +28,6 @@ class VideoButtons extends StatelessWidget {
 
         const SizedBox(height: 20),
 
-        // 🔇 Botón para activar/desactivar audio
         const _MuteButton(),
 
         const SizedBox(height: 20),
