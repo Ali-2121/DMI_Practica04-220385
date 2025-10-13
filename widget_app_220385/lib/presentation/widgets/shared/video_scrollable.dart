@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:widget_app_220385/domain/entitites/video_post.dart';
-import 'package:widget_app_220385/presentation/widgets/shared/video_butons.dart';
 import 'package:widget_app_220385/presentation/widgets/video/fullscreen_player.dart';
 
 class VideoScrollable extends StatelessWidget {
@@ -23,15 +22,13 @@ class VideoScrollable extends StatelessWidget {
               child: FullscreenPlayer(
                 caption: videoPost.caption,
                 videoUrl: videoPost.videoUrl,
+                likes: videoPost.likes,
+                views: videoPost.views, 
+                comments: videoPost.comments,
               ),
             ),
 
-            // Botones 
-            Positioned(
-              bottom: 40,
-              right: 20,
-              child: VideoButtons(video: videoPost),
-            )
+           
           ],
         );
       },

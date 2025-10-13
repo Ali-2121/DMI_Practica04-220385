@@ -1,12 +1,18 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart'; 
 import 'package:widget_app_220385/config/helpers/human_formats.dart';
 import 'package:widget_app_220385/domain/entitites/video_post.dart';
 
 class VideoButtons extends StatelessWidget {
   final VideoPost video;
+  final VideoPlayerController controller; 
 
-  const VideoButtons({super.key, required this.video});
+  const VideoButtons({
+    super.key,
+    required this.video,
+    required this.controller, 
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,8 @@ class VideoButtons extends StatelessWidget {
 
         const SizedBox(height: 20),
 
-        const _MuteButton(),
+        // 🔈 Mute button con control real de volumen
+        _MuteButton(controller: controller),
 
         const SizedBox(height: 20),
 
@@ -44,6 +51,7 @@ class VideoButtons extends StatelessWidget {
     );
   }
 }
+
 
 class _CustomIconButton extends StatelessWidget {
   final int value;
@@ -76,7 +84,9 @@ class _CustomIconButton extends StatelessWidget {
 
 // 🎵 Nuevo widget para el ícono de audio ON/OFF
 class _MuteButton extends StatefulWidget {
-  const _MuteButton();
+  final VideoPlayerController controller; // 👈 NUEVO
+
+  const _MuteButton({required this.controller});
 
   @override
   State<_MuteButton> createState() => _MuteButtonState();
@@ -85,15 +95,18 @@ class _MuteButton extends StatefulWidget {
 class _MuteButtonState extends State<_MuteButton> {
   bool isMuted = false;
 
+  void _toggleMute() {
+    setState(() {
+      isMuted = !isMuted;
+      widget.controller.setVolume(isMuted ? 0 : 1); // 👈 cambia volumen real
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return IconButton(
       iconSize: 30,
-      onPressed: () {
-        setState(() {
-          isMuted = !isMuted;
-        });
-      },
+      onPressed: _toggleMute,
       icon: AnimatedSwitcher(
         duration: const Duration(milliseconds: 300),
         transitionBuilder: (child, animation) =>
@@ -101,9 +114,11 @@ class _MuteButtonState extends State<_MuteButton> {
         child: Icon(
           isMuted ? Icons.volume_off_rounded : Icons.volume_up_rounded,
           key: ValueKey<bool>(isMuted),
-          color: isMuted ? const Color.fromARGB(255, 109, 108, 108) : Colors.white,
+          color:
+              isMuted ? const Color.fromARGB(255, 109, 108, 108) : Colors.white,
         ),
       ),
     );
   }
 }
+
