@@ -1,13 +1,13 @@
 List<Map<String, dynamic>> localVideoPosts = [
   {
-    'name': 'Los gatos más lindos que haz visto',
+    'name': 'Un gatito lindo',
     'videoUrl': 'assets/videos/video1.mp4',
     'likes': 1000000,
     'views': 4555,
     'comments': 67777
   },
   {
-    'name': 'En la nieve',
+    'name': 'Este gato me representa',
     'videoUrl': 'assets/videos/video2.mp4',
     'likes': 2000000,
     'views': 77866,

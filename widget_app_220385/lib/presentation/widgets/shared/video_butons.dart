@@ -55,7 +55,7 @@ class _CustomIconButton extends StatelessWidget {
     required this.value,
     required this.iconData,
     iconColor,
-  }) : color = iconColor ?? Colors.black;
+  }) : color = iconColor ?? Colors.white;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +68,7 @@ class _CustomIconButton extends StatelessWidget {
         if (value > 0)
           Text(
             HumanFormats.humanReadbleNumber(value.toDouble()),
+            style: const TextStyle(color: Colors.white), 
           ),
       ],
     );
@@ -101,7 +102,7 @@ class _MuteButtonState extends State<_MuteButton> {
         child: Icon(
           isMuted ? Icons.volume_off_rounded : Icons.volume_up_rounded,
           key: ValueKey<bool>(isMuted),
-          color: isMuted ? Colors.grey : Colors.black,
+          color: isMuted ? const Color.fromARGB(255, 109, 108, 108) : Colors.white,
         ),
       ),
     );

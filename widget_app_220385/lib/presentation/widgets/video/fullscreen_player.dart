@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:widget_app_220385/presentation/widgets/video/video_backgound.dart';
 
 class FullscreenPlayer extends StatefulWidget {
   final String videoUrl;
@@ -73,7 +74,9 @@ Widget build(BuildContext context) {
             VideoPlayer(controller),
       
             //Gradiente
-      
+            VideoBackgound(
+              stops: const  [0.8, 1.0],
+            ),
             //Texto
             Positioned(
               bottom: 20,
@@ -90,12 +93,13 @@ Widget build(BuildContext context) {
 
 class _VideoCaption extends StatelessWidget {
   final String caption;
-  const _VideoCaption({super.key, required this.caption});
+  const _VideoCaption({ required this.caption});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final titleStyle = Theme.of(context).textTheme.titleMedium;
+    final titleStyle = Theme.of(context).textTheme.titleMedium
+        ?.copyWith(color: Colors.white);
     return SizedBox(
       width: size.width * 0.6,
       child: Text(caption, maxLines: 2, style: titleStyle),
