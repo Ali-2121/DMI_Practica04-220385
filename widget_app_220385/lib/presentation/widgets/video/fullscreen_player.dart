@@ -57,20 +57,30 @@ Widget build(BuildContext context) {
       return const Center(child: Text('Video no inicializado'));
     }
 
-    return AspectRatio(
-      aspectRatio: controller.value.aspectRatio,
-      child: Stack(
-        children: [
-          VideoPlayer(controller),
+    return GestureDetector(
+      onTap: (){
+        if (controller.value.isPlaying) {
+          controller.pause();
+          return;
+        }
+        controller.play();
 
-          //Gradiente
-
-          //Texto
-          Positioned(
-            bottom: 20,
-            left: 20,
-            child: _VideoCaption( caption: widget.caption ))
-        ],
+      },
+      child: AspectRatio(
+        aspectRatio: controller.value.aspectRatio,
+        child: Stack(
+          children: [
+            VideoPlayer(controller),
+      
+            //Gradiente
+      
+            //Texto
+            Positioned(
+              bottom: 20,
+              left: 20,
+              child: _VideoCaption( caption: widget.caption ))
+          ],
+        ),
       ),
     );
   },
