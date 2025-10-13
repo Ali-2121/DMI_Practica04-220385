@@ -13,7 +13,7 @@ class DiscoverProvider extends ChangeNotifier { // Nos permite cambiar el estado
   }
 
   Future<void> loadNextPage() async {
-    await Future.delayed(const Duration(seconds: 2));
+    // await Future.delayed(const Duration(seconds: 2));
 
     final List<VideoPost> newVideos = localVideoPosts
         .map((video) => LocalVideoModel.fromJs(video).toVideoPostEntity())
