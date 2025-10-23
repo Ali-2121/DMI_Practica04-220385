@@ -40,11 +40,11 @@ En esta práctica se realizó la construcción de una aplicacación móvil que p
     </tr>
     <tr>
       <td>Ícono personalizado de la app</td>
-      <td><img src="imgs/app_icon.jpg" alt="Pantalla principal" width="400"></td>
+      <td><img src="widget_app_220385/imgs/app_icon.jpg" alt="Pantalla principal" width="400"></td>
     </tr>
     <tr>
       <td>Splash screen.</td>
-      <td><img src="imgs/splash_creen.jpg" alt="Detalle de video" width="400"></td>
+      <td><img src="widget_app_220385/imgs/splash_creen.jpg" alt="Detalle de video" width="400"></td>
     </tr>
     <tr>
       <td>Botón de reproducción en funcionamiento.</td>
