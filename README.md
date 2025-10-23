@@ -48,27 +48,27 @@ En esta práctica se realizó la construcción de una aplicacación móvil que p
     </tr>
     <tr>
       <td>Botón de reproducción en funcionamiento.</td>
-      <td><img src="imgs/play_icon.jpg" alt="Play y pausa" width="400"></td>
+      <td><img src="widget_app_220385/imgs/play_icon.jpg" alt="Play y pausa" width="400"></td>
     </tr>
     <tr>
       <td>Botón de pausa en funcionamiento.</td>
-      <td><img src="imgs/pause_icon.jpg" alt="Control de volumen" width="400"></td>
+      <td><img src="widget_app_220385/imgs/pause_icon.jpg" alt="Control de volumen" width="400"></td>
     </tr>
     <tr>
       <td>Cambio de ícono al silenciar sonido</td>
-      <td><img src="imgs/mute_icon.jpg" alt="Control de volumen" width="400"></td>
+      <td><img src="widget_app_220385/imgs/mute_icon.jpg" alt="Control de volumen" width="400"></td>
     </tr>
     <tr>
       <td>Cambio de ícono al activar sonido</td>
-      <td><img src="imgs/sound_icon.jpg" alt="Control de volumen" width="400"></td>
+      <td><img src="widget_app_220385/imgs/sound_icon.jpg" alt="Control de volumen" width="400"></td>
     </tr>
     <tr>
       <td>Funcionamiento del scroll en los videos</td>
-      <td><img src="imgs/scoll_videos.jpg" alt="Control de volumen" width="400"></td>
+      <td><img src="widget_app_220385/imgs/scoll_videos.jpg" alt="Control de volumen" width="400"></td>
     </tr>
     <tr>
       <td>Vista general con íconos implementados</td>
-      <td><img src="imgs/video.jpg" alt="Control de volumen" width="400"></td>
+      <td><img src="widget_app_220385/imgs/video.jpg" alt="Control de volumen" width="400"></td>
     </tr>
    
   </table>
