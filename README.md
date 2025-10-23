@@ -47,11 +47,11 @@ En esta práctica se realizó la construcción de una aplicacación móvil que p
       <td><img src="widget_app_220385/imgs/splash_creen.jpg" alt="Detalle de video" width="400"></td>
     </tr>
     <tr>
-      <td>Botón de reproducción en funcionamiento.</td>
+      <td>Botón de pausa en funcionamiento.</td>
       <td><img src="widget_app_220385/imgs/play_icon.jpg" alt="Play y pausa" width="400"></td>
     </tr>
     <tr>
-      <td>Botón de pausa en funcionamiento.</td>
+      <td>Botón de play en funcionamiento.</td>
       <td><img src="widget_app_220385/imgs/pause_icon.jpg" alt="Control de volumen" width="400"></td>
     </tr>
     <tr>
